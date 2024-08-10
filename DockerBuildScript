@@ -27,7 +27,7 @@ docker images
 # List containers
 docker ps -a
 
-# Remove all exited containers ->
+# Remove all exited containers https://docs.docker.com/reference/cli/docker/container/ls/
 containers=$(docker ps -a -q)
 for container in $containers; do
   docker container rm $container
