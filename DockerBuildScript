@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Update package manager
+sudo yum update -y
+
+# Install Docker
+sudo yum install -y docker
+
+# Start Docker service
+sudo systemctl start docker
+
+# Enable Docker service on boot
+sudo systemctl enable docker
+
+# Add user to Docker group
+sudo usermod -a -G docker ec2-user
+
+# Pull hello-world image
+docker pull hello-world
+
+# Run hello-world container
+docker run hello-world
+
+# List images
+docker images
+
+# List containers
+docker ps -a
+
+# Remove all exited containers ->
+containers=$(docker ps -a -q)
+for container in $containers; do
+  docker container rm $container
+done
+
+# List containers again to verify removal - it should be noted this deletes the container immediately because there's no wait. We could probably add my favorite command "sleep" into the line above. 
+docker ps -a
