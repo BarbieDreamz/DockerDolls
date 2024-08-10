@@ -24,30 +24,27 @@ Prerequisites:
 6. Check the status of the Docker service:
    sudo service docker status
 
-7. Enable the Docker service to start automatically on system boot:
-   sudo systemctl enable docker
-
-8. Add the current user (ec2-user) to the Docker group to allow running Docker commands without sudo:
+7. Add the current user (ec2-user) to the Docker group to allow running Docker commands without sudo:
    sudo usermod -a -G docker ec2-user
    - note I also changed the password of ec2-user and started using it instead of ssm-user.
 
-9. Verify that you can run Docker commands without sudo:
+8. Verify that you can run Docker commands without sudo:
    docker ps
 
-10. Pull the "hello-world" Docker image:
+9. Pull the "hello-world" Docker image:
 	docker pull hello-world
 
-11. Run the "hello-world" container:
+10. Run the "hello-world" container:
 	docker run hello-world
 
-12. List the Docker images:
+11. List the Docker images:
     docker images
 
-13. List the Docker containers (both running and exited):
+12. List the Docker containers (both running and exited):
     docker ps -a
 
-14. Remove the exited "hello-world" container:
+13. Remove the exited "hello-world" container:
     docker container rm 7cc5f2c049a2
 
-15. Verify that the container has been removed:
+14. Verify that the container has been removed:
     docker ps -a
